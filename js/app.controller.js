@@ -88,11 +88,13 @@ function renderLocations(locs) {
         return `
     <div class="card-loc">
         <h3>${loc.name}</h3>
-        <p>createdAt: ${loc.createdAt}</p> 
-        <p>updatedAt: ${loc.updatedAt}</p>
+        <p>Created At:<br> ${loc.createdAt}</p> 
+        <p>Updated At:<br> ${loc.updatedAt}</p>
         <p>Id: ${loc.id}</p>
+        <div>
         <button id="${loc.id}" class="btn-go-to">Go</button>
-        <button>Delete</button>
+        <button  id="${loc.id}" class="btn-delete">Delete</button>
+        </div>
     </div>
         `
     }).join('');
