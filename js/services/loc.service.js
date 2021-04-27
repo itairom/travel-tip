@@ -40,12 +40,12 @@ var locs = [
 
 function setLocs(loc) {
 
-
     console.log(loc);
     const location = {
 
         lat: loc.lat,
         lng: loc.lng,
+
         createdAt: new Date().getDate(),
         id: utilService.makeId(),
         // name: getGeoLocation(loc.lat, loc.lng)

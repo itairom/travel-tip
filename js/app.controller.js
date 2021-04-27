@@ -15,6 +15,7 @@ function onInit() {
         .catch(() => console.log('Error: cannot init map'));
 
     // console.log(mapService.getclickLoc())
+    // btn-get-locs.addEventListener
 
 }
 
@@ -30,11 +31,17 @@ function addEventListenrs() {
         console.log('Panning the Map');
         mapService.panTo(35.6895, 139.6917);
     })
+    document.querySelector('.go-btn').addEventListener('click', (ev) => {
+        let elInput = document.querySelector('input[name=go-search]').value
+            // console.log(elInput);
 
-    document.querySelector('.btn-add-marker').addEventListener('click', (ev) => {
-        console.log('Adding a marker');
-        mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
+
+
     })
+
+
+
+
     document.querySelector('.btn-get-locs').addEventListener('click', (ev) => {
         locService.getLocs()
             .then(renderLocations)
@@ -55,7 +62,6 @@ function addEventListenrs() {
                 console.log('err!!!', err);
             })
     })
-
 
 }
 
@@ -79,10 +85,30 @@ function renderLocations(locs) {
         <p>createdAt: ${loc.createdAt}</p> 
         <p>updatedAt: ${loc.updatedAt}</p>
         <p>Id: ${utilService.makeId()}</p>
-        <button>Go</button>
+        <button id="${loc.id}" class="btn-go-to">Go</button>
         <button>Delete</button>
     </div>
         `
     }).join('');
-    document.querySelector('.loc-table').innerHTML = strHtmls
+    document.querySelector('.loc-table').innerHTML = strHtmls;
+    let elBtns = document.querySelectorAll('.btn-go-to');
+    elBtns.forEach(btn => {
+        btn.addEventListener('click', (ev) => {
+            locService.getLocs()
+                .then(locs => {
+                    console.log(ev.target.id);
+                    let currLoc = locs.filter(loc => {
+                        return loc.id === +ev.target.id
+                    })
+                    const { lat, lng } = currLoc[0]
+                    console.log(lat, lng);
+                    mapService.panTo(lat, lng);
+
+                })
+        });
+    })
 }
+
+// function deleteLoc(){
+
+// }
