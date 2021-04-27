@@ -10,44 +10,40 @@
 
 <body>
     <main>
-        <header class="main-header flex space-between align-center">
+        <header class="main-header container flex space-between align-center">
             <h1 class="logo">TravelTip</h1>
             <div class="loc-container">
-                <input name="go-search" class="input-go" type="text">
+                <input name="go-search" class="input-go" type="text" placeholder="Go to...">
                 <button class="go-btn">GO</button>
                 <button class="btn-user-pos">My Location</button>
             </div>
         </header>
 
-        <section class="location flex space-between align-center">
+        <section class="location container flex space-between align-center">
             <h2>Location:</h2>
             <button>Copy Location</button>
         </section>
         <main class="main-container flex align-center justify-content">
-            <div>
+            <!-- <div>
                 <div class="wearher">Weather today</div>
-                <div class="loc-table">
-                    <h2>Location Table</h2>
-                    <!-- <div class="card-loc">
-                        <h3>location Name</h3>
-                        <p>createdAt</p> 
-                        <p>updatedAt</p>
-                        <button>Go</button>
-                        <button>Delete</button>
-                    </div> -->
-                </div>
+            </div> -->
+            <div>
+                <p>You are at: <span class="user-pos"></span></p>
+                <!-- <p>Locations: <span class="locs"></span></p> -->
             </div>
             <div id="map" style="width: 50%; height: 400px;"></div>
         </main>
-
+        
         <section class="btns flex align-center justify-content">
             <button class="btn-add-marker">Add Marker Specific Location</button>
             <button class="btn-get-locs">Get Locations</button>
             <button class="btn-pan">Pan Map to Tokyo</button>
         </section>
 
-        <p>You are at: <span class="user-pos"></span></p>
-        <p>Locations: <span class="locs"></span></p>
+        <div class="loc">
+            <h2>Location Table</h2>
+            <div class="loc-table"></div>
+        </div>
     </main>
 
 

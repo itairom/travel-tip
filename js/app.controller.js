@@ -15,7 +15,8 @@ function onInit() {
         .catch(() => console.log('Error: cannot init map'));
 
     // console.log(mapService.getclickLoc())
-    // btn-get-locs.addEventListener
+    locService.getLocs()
+    .then(renderLocations)
 
 }
 
@@ -45,9 +46,6 @@ function addEventListenrs() {
 
     })
 
-
-
-
     document.querySelector('.btn-get-locs').addEventListener('click', (ev) => {
         locService.getLocs()
             .then(renderLocations)
@@ -68,6 +66,8 @@ function addEventListenrs() {
                 console.log('err!!!', err);
             })
     })
+
+
 
 }
 
@@ -91,7 +91,7 @@ function renderLocations(locs) {
         <h3>${loc.name}</h3>
         <p>createdAt: ${loc.createdAt}</p> 
         <p>updatedAt: ${loc.updatedAt}</p>
-        <p>Id: ${utilService.makeId()}</p>
+        <p>Id: ${loc.id}</p>
         <button id="${loc.id}" class="btn-go-to">Go</button>
         <button>Delete</button>
     </div>
@@ -99,13 +99,14 @@ function renderLocations(locs) {
     }).join('');
     document.querySelector('.loc-table').innerHTML = strHtmls;
     let elBtns = document.querySelectorAll('.btn-go-to');
+
     elBtns.forEach(btn => {
         btn.addEventListener('click', (ev) => {
             locService.getLocs()
                 .then(locs => {
                     console.log(ev.target.id);
                     let currLoc = locs.filter(loc => {
-                        return loc.id === +ev.target.id
+                        return loc.id === ev.target.id
                     })
                     const { lat, lng } = currLoc[0]
                     console.log(lat, lng);
