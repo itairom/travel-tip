@@ -3,6 +3,7 @@ import { mapService } from './services/map.service.js'
 
 window.onload = onInit;
 
+
 function onInit() {
 
     addEventListenrs();
@@ -11,15 +12,23 @@ function onInit() {
             console.log('Map is ready');
         })
         .catch(() => console.log('Error: cannot init map'));
+
+    console.log(mapService.getclickLoc())
+
 }
+
+
+// mapService.onSetLocs(loc)
+
+
+
+
 
 function addEventListenrs() {
     document.querySelector('.btn-pan').addEventListener('click', (ev) => {
         console.log('Panning the Map');
-        mapService.panTo(35.6895, 139.6917);
+        mapService.panTo(35.6895, 139.6917); // send to my location
     })
-
-
 
     document.querySelector('.btn-add-marker').addEventListener('click', (ev) => {
         console.log('Adding a marker');
