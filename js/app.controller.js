@@ -75,10 +75,18 @@ function renderLocations(locs) {
         <p>createdAt: ${loc.createdAt}</p> 
         <p>updatedAt: ${loc.updatedAt}</p>
         <p>Id: ${utilService.makeId()}</p>
-        <button>Go</button>
+        <button class="go-to">Go</button>
         <button>Delete</button>
     </div>
         `
     }).join('');
     document.querySelector('.loc-table').innerHTML = strHtmls
+}
+
+function goToLoc(){
+
+}
+
+function deleteLoc(){
+    
 }
