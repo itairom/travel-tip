@@ -16,16 +16,9 @@ function onInit() {
 
     // console.log(mapService.getclickLoc())
     locService.getLocs()
-    .then(renderLocations)
+        .then(renderLocations)
 
 }
-
-
-// mapService.onSetLocs(loc)
-
-
-
-
 
 function addEventListenrs() {
     document.querySelector('.btn-pan').addEventListener('click', (ev) => {
@@ -34,16 +27,10 @@ function addEventListenrs() {
     })
     document.querySelector('.go-btn').addEventListener('click', (ev) => {
         let elInput = document.querySelector('input[name=go-search]').value
-        console.log(elInput);
-
         locService.getGeoAddress(elInput)
             .then(loc => {
-
                 mapService.panTo(loc.lat, loc.lng);
             })
-
-
-
     })
 
     document.querySelector('.btn-get-locs').addEventListener('click', (ev) => {
@@ -116,7 +103,3 @@ function renderLocations(locs) {
         });
     })
 }
-
-// function deleteLoc(){
-
-// }

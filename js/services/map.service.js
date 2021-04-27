@@ -7,15 +7,19 @@ export const mapService = {
     panTo
 }
 
-
-
 var gMap;
-let gClickLoc = {
-    lat: 55,
-    lng: 55
-}
+var gCurrPos = { lat: '', lng: '' }
 
 const myLatlng = { lat: 29.555, lng: 34.960 };
+// navigator.geolocation.getCurrentPosition(
+//     (position) => {
+//         const pos = {
+//             lat: position.coords.latitude,
+//             lng: position.coords.longitude,
+//         };
+//         gCurrPos.lat = pos.lat
+//         gCurrPos.lng = pos.lng
+//     })
 
 
 function initMap(lat = 29.555, lng = 34.960) {
@@ -23,6 +27,7 @@ function initMap(lat = 29.555, lng = 34.960) {
         .then(() => {
             gMap = new google.maps.Map(
                 document.querySelector('#map'), {
+
                     center: { lat, lng },
                     zoom: 15
                 })
@@ -39,7 +44,6 @@ function initMap(lat = 29.555, lng = 34.960) {
             });
 
 
-            infoWindow.open(gMap);
             // Configure the click listener.
             gMap.addListener("click", (mapsMouseEvent) => {
                 // Close the current InfoWindow.
@@ -65,19 +69,6 @@ function initMap(lat = 29.555, lng = 34.960) {
         })
 
 }
-
-function setClickedLocations(lat, lng) {
-    gClickLoc.lat = lat
-    gClickLoc.lng = lng
-}
-
-// function getclickLoc() {
-//     return gClickLoc
-// }
-
-
-
-
 
 function addMarker(loc) {
     var marker = new google.maps.Marker({

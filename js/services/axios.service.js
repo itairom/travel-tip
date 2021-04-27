@@ -9,7 +9,7 @@ function askForGeoLocation(lat, lng) {
 }
 
 function askForGeoAdress(address) {
-    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address},+CA&key=AIzaSyDXTPuZuBmNiNWO3LBY2ex2YwLXa6m1nSE`)
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address},+ISR&key=AIzaSyDXTPuZuBmNiNWO3LBY2ex2YwLXa6m1nSE`)
         .then(res => {
             return res.data;
         })

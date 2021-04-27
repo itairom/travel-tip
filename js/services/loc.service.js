@@ -35,7 +35,6 @@ function getGeoAddress(address) {
 }
 
 function setGeoAddress(res) {
-    console.log(res.results[0].geometry.location);
     return res.results[0].geometry.location
 }
 
@@ -51,17 +50,18 @@ function setLocs(loc) {
 
         lat: loc.lat,
         lng: loc.lng,
-        updatedAt:date,
+        updatedAt: date,
         createdAt: date,
         id: utilService.makeId(),
         // name: getGeoLocation(loc.lat, loc.lng)
     }
-    
+
 
     getGeoLocation(loc.lat, loc.lng)
         .then(res => location.name = res)
 
     locs.push(location)
+
 
 }
 
