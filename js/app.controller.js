@@ -14,7 +14,7 @@ function onInit() {
         })
         .catch(() => console.log('Error: cannot init map'));
 
-    console.log(mapService.getclickLoc())
+    // console.log(mapService.getclickLoc())
 
 }
 
@@ -38,10 +38,10 @@ function addEventListenrs() {
     document.querySelector('.btn-get-locs').addEventListener('click', (ev) => {
         locService.getLocs()
             .then(renderLocations)
-        // .then(locs => {
-        //     console.log('Locations:', locs)
-        //     document.querySelector('.locs').innerText = JSON.stringify(locs)
-        // })
+            // .then(locs => {
+            //     console.log('Locations:', locs)
+            //     document.querySelector('.locs').innerText = JSON.stringify(locs)
+            // })
     })
     document.querySelector('.btn-user-pos').addEventListener('click', (ev) => {
         getPosition()

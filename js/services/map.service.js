@@ -4,9 +4,7 @@ import { locService } from './loc.service.js'
 export const mapService = {
     initMap,
     addMarker,
-    panTo,
-    onSetLocs,
-    getclickLoc
+    panTo
 }
 
 
@@ -60,10 +58,10 @@ function initMap(lat = 29.555, lng = 34.960) {
                 infoWindow.open(map);
 
                 let loc = JSON.parse(infoWindow.content)
-                setClickedLocations(loc.lat, loc.lng)
+                    // setClickedLocations(loc.lat, loc.lng)
                 console.log(locService.getLocs());
 
-                // onSetLocations(ClickLoc)
+                locService.setLocs(loc)
 
             });
 
@@ -77,13 +75,11 @@ function setClickedLocations(lat, lng) {
     gClickLoc.lng = lng
 }
 
-function getclickLoc() {
-    return gClickLoc
-}
+// function getclickLoc() {
+//     return gClickLoc
+// }
 
-function onSetLocs(gClickLoc) {
-    console.log(gClickLoc);
-}
+
 
 
 
