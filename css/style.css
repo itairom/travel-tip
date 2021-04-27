@@ -1,32 +1,56 @@
-*{
+* {
     box-sizing: border-box;
 }
+
 /* BASE */
 body {
     margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(247, 247, 214);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-h1, h2, h3, h4, h5, h6, p {
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
     margin: 0 0 1rem;
 }
+
 button {
     cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    background-color: lightsteelblue;
+    padding: 3px;
+    font-weight: bold;
 }
 
 /* componenets */
 
-.loc-table{
-background-color: aquamarine;
-
+.loc-table {
+    width: 50vw;
+    background-color: rgb(131, 199, 176);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
+
 .card-loc {
-border: solid;
+    border: solid;
+    text-align: center;
 }
 
 /* HELPERS */
 .flex {
     display: flex;
 }
-.justify-content{
+
+.justify-content {
     justify-content: center;
 }
 
@@ -50,7 +74,43 @@ border: solid;
     margin: 0;
     padding: 0;
 }
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
 }
+
+.main-container{
+margin-bottom: 10px;
+flex-direction: column;
+}
+
+.main-header>*:last-child{
+    margin-inline-start: 15px;
+}
+.btn-user-pos{
+    background-color: rgb(112, 197, 169);
+    margin-inline-start: 20px;
+    padding: 8px;
+}
+.logo {
+    color: brown;
+}
+.loc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.loc h2{
+    color: brown;
+}
+.btns {
+    margin-block-end: 10px;
+}
+.btns >* {
+    margin-inline-end: 5px;
+}
+

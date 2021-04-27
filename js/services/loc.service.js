@@ -36,8 +36,8 @@ function setGeoAddress(res) {
 }
 
 var locs = [
-    { name: 'Tel-Aviv', lat: 32.047104, lng: 34.832384, createdAt: date, updatedAt: 10, id: 345 },
-    { name: 'Ramat Hasharon', lat: 32.047201, lng: 34.832581, createdAt: date, updatedAt: 9, id: 890 }
+    { name: 'Tel-Aviv', lat: 32.047104, lng: 34.832384, createdAt: date, updatedAt: date, id: '345' },
+    { name: 'Ramat Hasharon', lat: 32.047201, lng: 34.832581, createdAt: date, updatedAt: date, id: '890' }
 ]
 
 function setLocs(loc) {
@@ -47,11 +47,12 @@ function setLocs(loc) {
 
         lat: loc.lat,
         lng: loc.lng,
-
-        createdAt: new Date().getDate(),
+        updatedAt:date,
+        createdAt: date,
         id: utilService.makeId(),
         // name: getGeoLocation(loc.lat, loc.lng)
     }
+    
 
     getGeoLocation(loc.lat, loc.lng)
         .then(res => location.name = res)
