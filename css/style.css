@@ -1,16 +1,26 @@
 *{
     box-sizing: border-box;
 }
+/* BASE */
 body {
     margin: 0;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
     margin: 0 0 1rem;
 }
 button {
     cursor: pointer;
 }
 
+/* componenets */
+
+.loc-table{
+background-color: aquamarine;
+
+}
+.card-loc {
+border: solid;
+}
 
 /* HELPERS */
 .flex {

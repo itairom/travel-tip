@@ -1,3 +1,4 @@
+import { utilService } from './services/util.service.js'
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 
@@ -27,11 +28,11 @@ function addEventListenrs() {
     })
     document.querySelector('.btn-get-locs').addEventListener('click', (ev) => {
         locService.getLocs()
-            .then(locs => {
-                console.log('Locations:', locs)
-                document.querySelector('.locs').innerText = JSON.stringify(locs)
-            })
-
+            .then(renderLocations)
+        // .then(locs => {
+        //     console.log('Locations:', locs)
+        //     document.querySelector('.locs').innerText = JSON.stringify(locs)
+        // })
     })
     document.querySelector('.btn-user-pos').addEventListener('click', (ev) => {
         getPosition()
@@ -53,4 +54,22 @@ function getPosition() {
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
+}
+
+
+function renderLocations(locs) {
+    let strHtmls = locs.map(loc => {
+
+        return `
+    <div class="card-loc">
+        <h3>${loc.name}</h3>
+        <p>createdAt: ${loc.createdAt}</p> 
+        <p>updatedAt: ${loc.updatedAt}</p>
+        <p>Id: ${utilService.makeId()}</p>
+        <button>Go</button>
+        <button>Delete</button>
+    </div>
+        `
+    }).join('');
+    document.querySelector('.loc-table').innerHTML = strHtmls
 }
