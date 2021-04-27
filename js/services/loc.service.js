@@ -1,6 +1,10 @@
 export const locService = {
     getLocs,
-    setLocs
+    setLocs,
+    getGeoAddress,
+    getGeoLocation,
+    setGeoAddress,
+    setGeoLocation
 }
 import { utilService } from './util.service.js';
 import { axiosService } from './axios.service.js'
@@ -58,6 +62,8 @@ function setLocs(loc) {
 
     console.log('locs:', locs);
 }
+
+
 
 function getLocs() {
     return new Promise((resolve, reject) => {

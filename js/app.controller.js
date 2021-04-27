@@ -35,6 +35,11 @@ function addEventListenrs() {
         let elInput = document.querySelector('input[name=go-search]').value
             // console.log(elInput);
 
+        locService.getGeoAddress(elInput)
+            // .then(res => {
+            //     console.log(res);
+            // })
+
 
 
     })
