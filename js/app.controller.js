@@ -69,6 +69,7 @@ function getPosition() {
 
 
 function renderLocations(locs) {
+    console.log(locs);
     let strHtmls = locs.map(loc => {
 
         return `

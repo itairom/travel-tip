@@ -18,7 +18,6 @@ let gClickLoc = {
 const myLatlng = { lat: 29.555, lng: 34.960 };
 
 
-
 function initMap(lat = 29.555, lng = 34.960) {
     console.log('InitMap');
     return _connectGoogleApi()
