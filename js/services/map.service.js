@@ -19,16 +19,13 @@ const myLatlng = { lat: 29.555, lng: 34.960 };
 
 
 function initMap(lat = 29.555, lng = 34.960) {
-    console.log('InitMap');
     return _connectGoogleApi()
         .then(() => {
-            console.log('google available');
             gMap = new google.maps.Map(
                 document.querySelector('#map'), {
                     center: { lat, lng },
                     zoom: 15
                 })
-            console.log('Map!', gMap);
 
             new google.maps.Marker({
                 position: gMap.center,

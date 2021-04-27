@@ -29,27 +29,34 @@ function onInit() {
 function addEventListenrs() {
     document.querySelector('.btn-pan').addEventListener('click', (ev) => {
         console.log('Panning the Map');
-        mapService.panTo(35.6895, 139.6917); // send to my location
+        mapService.panTo(35.6895, 139.6917);
+    })
+    document.querySelector('.go-btn').addEventListener('click', (ev) => {
+        let elInput = document.querySelector('input[name=go-search]').value
+            // console.log(elInput);
+
+
+
     })
 
-    document.querySelector('.btn-add-marker').addEventListener('click', (ev) => {
-        console.log('Adding a marker');
-        mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
-    })
+
+
+
     document.querySelector('.btn-get-locs').addEventListener('click', (ev) => {
         locService.getLocs()
             .then(renderLocations)
-        // .then(locs => {
-        //     console.log('Locations:', locs)
-        //     document.querySelector('.locs').innerText = JSON.stringify(locs)
-        // })
+            // .then(locs => {
+            //     console.log('Locations:', locs)
+            //     document.querySelector('.locs').innerText = JSON.stringify(locs)
+            // })
     })
     document.querySelector('.btn-user-pos').addEventListener('click', (ev) => {
         getPosition()
             .then(pos => {
                 console.log('User position is:', pos.coords);
-                document.querySelector('.user-pos').innerText =
-                    `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+                // document.querySelector('.user-pos').innerText =
+                //     `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+                mapService.panTo(pos.coords.latitude, pos.coords.longitude)
             })
             .catch(err => {
                 console.log('err!!!', err);
@@ -64,6 +71,7 @@ function getPosition() {
     console.log('Getting Pos');
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
+
     })
 }
 

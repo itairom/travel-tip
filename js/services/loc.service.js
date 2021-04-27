@@ -2,10 +2,38 @@ export const locService = {
     getLocs,
     setLocs
 }
-import { utilService } from './util.service.js'
+import { utilService } from './util.service.js';
+import { axiosService } from './axios.service.js'
 
 let today = new Date();
 let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+// testApi(axiosService.askForGeoLocation(32.047104, 34.832384))
+//     .then(res =>
+//         console.log(res))
+
+// getGeoLocation()
+
+function getGeoLocation(lat, lng) {
+    return axiosService.askForGeoLocation(lat, lng)
+        .then(setGeoLocation)
+}
+
+function setGeoLocation(res) {
+    console.log(res.results[0].address_components[2].long_name);
+    return res.results[0].address_components[2].long_name
+}
+
+getGeoAddress('yafo')
+
+function getGeoAddress(address) {
+    return axiosService.askForGeoAdress(address)
+        .then(setGeoAddress)
+}
+
+function setGeoAddress(res) {
+    console.log(res.results[0].geometry.location);
+    return res.results[0].address_components[2].long_name
+}
 
 var locs = [
     { name: 'Tel-Aviv', lat: 32.047104, lng: 34.832384, createdAt: date, updatedAt: 10, id: 345 },
@@ -14,15 +42,21 @@ var locs = [
 
 function setLocs(loc) {
 
-    locs.push({
-        name: 'temp',
+    console.log(loc);
+    const location = {
+
         lat: loc.lat,
         lng: loc.lng,
-        createdAt: date,
-        updatedAt:date,
-        id: utilService.makeId()
 
-    })
+        createdAt: new Date().getDate(),
+        id: utilService.makeId(),
+        // name: getGeoLocation(loc.lat, loc.lng)
+    }
+
+    getGeoLocation(loc.lat, loc.lng)
+        .then(res => location.name = res)
+
+    locs.push(location)
 
     // console.log('locs:', locs);
 }
