@@ -15,6 +15,7 @@ function onInit() {
         .catch(() => console.log('Error: cannot init map'));
 
     // console.log(mapService.getclickLoc())
+    // btn-get-locs.addEventListener
 
 }
 
@@ -38,10 +39,10 @@ function addEventListenrs() {
     document.querySelector('.btn-get-locs').addEventListener('click', (ev) => {
         locService.getLocs()
             .then(renderLocations)
-            // .then(locs => {
-            //     console.log('Locations:', locs)
-            //     document.querySelector('.locs').innerText = JSON.stringify(locs)
-            // })
+        // .then(locs => {
+        //     console.log('Locations:', locs)
+        //     document.querySelector('.locs').innerText = JSON.stringify(locs)
+        // })
     })
     document.querySelector('.btn-user-pos').addEventListener('click', (ev) => {
         getPosition()
@@ -54,6 +55,7 @@ function addEventListenrs() {
                 console.log('err!!!', err);
             })
     })
+
 }
 
 
@@ -75,18 +77,30 @@ function renderLocations(locs) {
         <p>createdAt: ${loc.createdAt}</p> 
         <p>updatedAt: ${loc.updatedAt}</p>
         <p>Id: ${utilService.makeId()}</p>
-        <button class="go-to">Go</button>
+        <button id="${loc.id}" class="btn-go-to">Go</button>
         <button>Delete</button>
     </div>
         `
     }).join('');
-    document.querySelector('.loc-table').innerHTML = strHtmls
+    document.querySelector('.loc-table').innerHTML = strHtmls;
+    let elBtns = document.querySelectorAll('.btn-go-to');
+    elBtns.forEach(btn => {
+        btn.addEventListener('click', (ev) => {
+            locService.getLocs()
+                .then(locs => {
+                    console.log(ev.target.id);
+                    let currLoc = locs.filter(loc => {
+                        return loc.id === +ev.target.id
+                    })
+                    const { lat, lng } = currLoc[0]
+                    console.log(lat, lng);
+                    mapService.panTo(lat, lng);
+
+                })
+        });
+    })
 }
 
-function goToLoc(){
+// function deleteLoc(){
 
-}
-
-function deleteLoc(){
-    
-}
+// }

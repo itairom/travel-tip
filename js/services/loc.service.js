@@ -12,7 +12,6 @@ var locs = [
 
 function setLocs(loc) {
 
-
     console.log(loc);
     locs.push({
         name: 'temp',
@@ -20,9 +19,6 @@ function setLocs(loc) {
         lng: loc.lng,
         createdAt: new Date().getDate(),
         id: utilService.makeId()
-
-
-
 
     })
 
