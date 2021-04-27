@@ -1,10 +1,22 @@
+'use strict'
+import { locService } from './loc.service.js'
+
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    onSetLocs,
+    getclickLoc
 }
 
+
+
 var gMap;
+let gClickLoc = {
+    lat: 55,
+    lng: 55
+}
+
 const myLatlng = { lat: 29.555, lng: 34.960 };
 
 
@@ -47,8 +59,11 @@ function initMap(lat = 29.555, lng = 34.960) {
                 );
                 infoWindow.open(map);
 
-                console.log(infoWindow.content);
-                console.log(infoWindow.position);
+                let loc = JSON.parse(infoWindow.content)
+                setClickedLocations(loc.lat, loc.lng)
+                console.log(locService.getLocs());
+
+                // onSetLocations(ClickLoc)
 
             });
 
@@ -57,9 +72,20 @@ function initMap(lat = 29.555, lng = 34.960) {
 
 }
 
-function addToLoc() {
-
+function setClickedLocations(lat, lng) {
+    gClickLoc.lat = lat
+    gClickLoc.lng = lng
 }
+
+function getclickLoc() {
+    return gClickLoc
+}
+
+function onSetLocs(gClickLoc) {
+    console.log(gClickLoc);
+}
+
+
 
 function addMarker(loc) {
     var marker = new google.maps.Marker({
