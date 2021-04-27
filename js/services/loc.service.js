@@ -10,7 +10,7 @@ import { utilService } from './util.service.js';
 import { axiosService } from './axios.service.js'
 
 let today = new Date();
-let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 // testApi(axiosService.askForGeoLocation(32.047104, 34.832384))
 //     .then(res =>
 //         console.log(res))
@@ -27,7 +27,7 @@ function setGeoLocation(res) {
     return res.results[0].address_components[2].long_name
 }
 
-getGeoAddress('yafo')
+// getGeoAddress('yafo')
 
 function getGeoAddress(address) {
     return axiosService.askForGeoAdress(address)
@@ -36,7 +36,7 @@ function getGeoAddress(address) {
 
 function setGeoAddress(res) {
     console.log(res.results[0].geometry.location);
-    return res.results[0].address_components[2].long_name
+    return res.results[0].geometry.location
 }
 
 var locs = [
@@ -62,7 +62,6 @@ function setLocs(loc) {
 
     locs.push(location)
 
-    // console.log('locs:', locs);
 }
 
 

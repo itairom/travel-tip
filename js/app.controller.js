@@ -33,12 +33,13 @@ function addEventListenrs() {
     })
     document.querySelector('.go-btn').addEventListener('click', (ev) => {
         let elInput = document.querySelector('input[name=go-search]').value
-            // console.log(elInput);
+        console.log(elInput);
 
         locService.getGeoAddress(elInput)
-            // .then(res => {
-            //     console.log(res);
-            // })
+            .then(loc => {
+
+                mapService.panTo(loc.lat, loc.lng);
+            })
 
 
 
