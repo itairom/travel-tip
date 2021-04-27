@@ -4,6 +4,7 @@ import { mapService } from './services/map.service.js'
 window.onload = onInit;
 
 function onInit() {
+
     addEventListenrs();
     mapService.initMap()
         .then(() => {
@@ -17,6 +18,9 @@ function addEventListenrs() {
         console.log('Panning the Map');
         mapService.panTo(35.6895, 139.6917);
     })
+
+
+
     document.querySelector('.btn-add-marker').addEventListener('click', (ev) => {
         console.log('Adding a marker');
         mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
@@ -50,4 +54,3 @@ function getPosition() {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
 }
-
