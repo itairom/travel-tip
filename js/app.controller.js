@@ -28,7 +28,7 @@ function onInit() {
 function addEventListenrs() {
     document.querySelector('.btn-pan').addEventListener('click', (ev) => {
         console.log('Panning the Map');
-        mapService.panTo(35.6895, 139.6917); // send to my location
+        mapService.panTo(35.6895, 139.6917);
     })
 
     document.querySelector('.btn-add-marker').addEventListener('click', (ev) => {
@@ -54,6 +54,8 @@ function addEventListenrs() {
                 console.log('err!!!', err);
             })
     })
+
+
 }
 
 
@@ -62,6 +64,7 @@ function getPosition() {
     console.log('Getting Pos');
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
+
     })
 }
 
